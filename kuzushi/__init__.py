@@ -10,11 +10,11 @@ def lload(filename,list,w,h):
         cun.append(img)
     return np.array(cun)
 
-class DataSampler(shape,dbpath):
+class DataSampler(object):
     def __init__(self):
-        self.shape = shape
+        self.shape = [512,512,3]
         self.name = "kuzushi"
-        self.db_path = dbpath
+        self.db_path = '/home/usr8/n70208b/all_'
         self.db_files = os.listdir(self.db_path)
         self.cur_batch_ptr = 0
         self.cur_batch = self.load_new_data()

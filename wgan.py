@@ -94,7 +94,7 @@ if __name__ == '__main__':
     parser.add_argument('--model', type=str, default='dcgan')
     parser.add_argument('--gpus', type=str, default='0')
     parser.add_argument('--output', type=str, default='kuzushi')
-    parser.add_argument('--shape', type=str, default=[512,512,3])
+    parser.add_argument('--shape', type=str, default=[512,512,3])#h,w,channels
     parser.add_argument('--de_path', type=str, default='/home/usr8/n70208b/all_')
     args = parser.parse_args()
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpus

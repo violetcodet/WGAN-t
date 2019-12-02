@@ -1,7 +1,7 @@
 import os
 import numpy as np
 import cv2
-def lload(filename,list,w,h):
+def lload(filename,list,h,w):
     cun=[]
     for i in range(len(list)):
         pa=os.path.join(filename,list[i])
@@ -11,10 +11,10 @@ def lload(filename,list,w,h):
     return np.array(cun)
 
 class DataSampler(object):
-    def __init__(self):
-        self.shape = [512,512,3]
+    def __init__(self,shape,de_path):
+        self.shape = shape
         self.name = "kuzushi"
-        self.db_path = '/home/usr8/n70208b/all_'
+        self.db_path = de_path
         self.db_files = os.listdir(self.db_path)
         self.cur_batch_ptr = 0
         self.cur_batch = self.load_new_data()

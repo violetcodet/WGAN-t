@@ -4,7 +4,7 @@ mnist = input_data.read_data_sets('data/mnist')
 
 
 class DataSampler(object):
-    def __init__(self):
+    def __init__(self,shape,de_path):
         self.shape = [28, 28, 1]
 
     def __call__(self, batch_size):

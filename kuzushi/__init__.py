@@ -1,20 +1,20 @@
 import os
 import numpy as np
 import cv2
-def lload(filename,list):
+def lload(filename,list,w,h):
     cun=[]
     for i in range(len(list)):
         pa=os.path.join(filename,list[i])
         img=cv2.imread(pa)
-        img=cv2.resize(img,(512,512))
+        img=cv2.resize(img,(w,h))
         cun.append(img)
     return np.array(cun)
 
-class DataSampler(object):
+class DataSampler(shape,dbpath):
     def __init__(self):
-        self.shape = [512, 512, 3]
+        self.shape = shape
         self.name = "kuzushi"
-        self.db_path = "/home/usr8/n70208b/wgan/all_"
+        self.db_path = dbpath
         self.db_files = os.listdir(self.db_path)
         self.cur_batch_ptr = 0
         self.cur_batch = self.load_new_data()
@@ -26,11 +26,7 @@ class DataSampler(object):
         self.cur_batch_ptr += 1
         if self.cur_batch_ptr == len(self.db_files):
             self.cur_batch_ptr = 0
-        return (lload(self.db_path,self.db_files) -127.5)/127.5
-    def lload1(filename):
-        img=cv2.imread(filename)
-        img=cv2.resize(img,(1000,1500))
-        return img
+        return (lload(self.db_path,self.db_files,self.shape[0],self.shape[1]) -127.5)/127.5
     def __call__(self, batch_size):
         prev_batch_ptr = self.train_batch_ptr
         self.train_batch_ptr += batch_size

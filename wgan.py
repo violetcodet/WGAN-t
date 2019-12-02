@@ -90,17 +90,19 @@ class WassersteinGAN(object):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('')
-    parser.add_argument('--data', type=str, default='kuzushi')
+    parser.add_argument('--data', type=str, default='mnist')
     parser.add_argument('--model', type=str, default='dcgan')
     parser.add_argument('--gpus', type=str, default='0')
     parser.add_argument('--output', type=str, default='kuzushi')
-    parser.add_argument('--shape', type=str, default=[512,512,3])
-    parser.add_argument('--de_path', type=str, default='/home/usr8/n70208b/all_')
+    #parser.add_argument('--shape', type=str, default=[512,512,3])
+    #parser.add_argument('--de_path', type=str, default='/home/usr8/n70208b/all_')
     args = parser.parse_args()
     os.environ['CUDA_VISIBLE_DEVICES'] = args.gpus
     data = importlib.import_module(args.data)
     model = importlib.import_module(args.data + '.' + args.model)
-    xs = data.DataSampler(args.shape,args.de_path)
+    #shape=args.shape
+    #de_path=args.de_path
+    xs = data.DataSampler()
     zs = data.NoiseSampler()
     d_net = model.Discriminator()
     g_net = model.Generator()

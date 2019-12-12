@@ -21,7 +21,7 @@ if len(sys.argv) == 2 and sys.argv[1] == 'train':
     TRAIN = True
 
 
-
+'''
 input_dir='/home/yiping.tang/all'
 input_folder=os.listdir(input_dir)
 num_input=len(input_folder)
@@ -31,7 +31,7 @@ image_cha_pa=[]
 image_cha_class=[]
 image_ora=[]
 image_ora_pa=[]
-'''
+
 for i in range(num_input):
 #for i in range(1):
     if 1==0:

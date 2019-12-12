@@ -205,7 +205,8 @@ def train(dataset, epochs,path):
 
 
 def generate_and_save_images(model, epoch, test_input,path):
-    predictions = model.predict(test_input, steps=1)
+    #predictions = model.predict(test_input, steps=1)
+    predictions = model(test_input, training=False)
     fig = plt.figure(figsize=(4,4))
     for i in range(predictions.shape[0]):
         plt.subplot(4, 4, i+1)
